@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:struktur_data_demo/queue_screen.dart';
+import 'package:struktur_data_demo/source_code_widget.dart';
 import 'package:struktur_data_demo/stack_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -39,6 +40,7 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Stack & Queue Demo'),
         centerTitle: true,
+        actions: const [SourceCodeWidget()],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),

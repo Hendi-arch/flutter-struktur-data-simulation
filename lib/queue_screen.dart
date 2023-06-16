@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:struktur_data_demo/colored_item.dart';
 import 'package:struktur_data_demo/helpers.dart';
+import 'package:struktur_data_demo/source_code_widget.dart';
 
 class QueueScreen extends StatefulWidget {
   const QueueScreen({Key? key}) : super(key: key);
@@ -188,6 +189,7 @@ class _QueueScreenState extends State<QueueScreen> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Array Queue Demo'),
         centerTitle: true,
+        actions: const [SourceCodeWidget()],
       ),
       body: Form(
         key: _textEditingState,

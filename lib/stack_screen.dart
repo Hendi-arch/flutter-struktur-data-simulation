@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:struktur_data_demo/colored_item.dart';
 import 'package:struktur_data_demo/helpers.dart';
+import 'package:struktur_data_demo/source_code_widget.dart';
 
 class StackScreen extends StatefulWidget {
   const StackScreen({super.key});
@@ -185,6 +186,7 @@ class _StackScreenState extends State<StackScreen> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Array Stack Demo'),
         centerTitle: true,
+        actions: const [SourceCodeWidget()],
       ),
       body: Form(
         key: _textEditingState,

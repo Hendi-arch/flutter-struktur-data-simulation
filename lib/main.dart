@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'Stack & Queue Demo',
           theme: AppThemes.data(),
+          debugShowCheckedModeBanner: false,
           home: child,
         );
       },
