@@ -141,6 +141,7 @@ class _QueueScreenState extends State<QueueScreen> {
             'Front element from the queue: ${queueItems.first.value}',
           ),
           showCloseIcon: true,
+          duration: const Duration(milliseconds: 1500),
         ),
       );
     }

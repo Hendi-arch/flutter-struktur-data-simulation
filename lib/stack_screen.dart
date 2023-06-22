@@ -138,6 +138,7 @@ class _StackScreenState extends State<StackScreen> {
             'Topmost element from the stack: Stack data ${stackItems.length}',
           ),
           showCloseIcon: true,
+          duration: const Duration(milliseconds: 1500),
         ),
       );
     }
