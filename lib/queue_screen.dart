@@ -21,16 +21,21 @@ class _QueueScreenState extends State<QueueScreen> {
   final GlobalKey<FormState> _textEditingState = GlobalKey<FormState>();
   final ScrollController scrollController = ScrollController();
 
+  void showSnackBar(String message,
+      {Duration duration = const Duration(milliseconds: 3000)}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: duration,
+      ),
+    );
+  }
+
   bool enqueueItem() {
     if (_textEditingState.currentState!.validate()) {
       if (queueItems.length >= int.parse(_maxQueueController.text)) {
         // Show a message when the queue size exceeds the maximum limit
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Queue is full! ${_maxQueueController.text}'),
-            showCloseIcon: true,
-          ),
-        );
+        showSnackBar('Queue is full! ${_maxQueueController.text}');
         return false;
       } else {
         final randomColor = getRandomColor();
@@ -61,16 +66,8 @@ class _QueueScreenState extends State<QueueScreen> {
       if (count.isNegative) {
         await scrollTo(
             scrollController, scrollController.position.minScrollExtent);
-
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text(
-              'The data queue has reached its limit, making reductions...',
-            ),
-            showCloseIcon: true,
-          ),
-        );
+        showSnackBar(
+            'The data queue has reached its limit, making reductions...');
 
         for (var i = 0; i < count.abs(); i++) {
           if (!mounted) break;
@@ -136,15 +133,8 @@ class _QueueScreenState extends State<QueueScreen> {
       });
 
       // Returns the front element from the queue without removing it.
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            'Front element from the queue: ${queueItems.first.value}',
-          ),
-          showCloseIcon: true,
-          duration: const Duration(milliseconds: 1500),
-        ),
-      );
+      showSnackBar('Front element from the queue: ${queueItems.first.value}',
+          duration: const Duration(milliseconds: 1500));
     }
   }
 
@@ -152,22 +142,12 @@ class _QueueScreenState extends State<QueueScreen> {
     // Checks if the queue is empty.
     String message =
         queueItems.isEmpty ? 'Queue is empty.' : 'Queue is not empty.';
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        showCloseIcon: true,
-      ),
-    );
+    showSnackBar(message);
   }
 
   void checkQueueSize() {
     // Returns the number of elements in the queue.
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Number of elements in the queue: ${queueItems.length}'),
-        showCloseIcon: true,
-      ),
-    );
+    showSnackBar('Number of elements in the queue: ${queueItems.length}');
   }
 
   void clearQueue() async {

@@ -23,16 +23,21 @@ class _StackScreenState extends State<StackScreen> {
   final GlobalKey<FormState> _textEditingState = GlobalKey<FormState>();
   final ScrollController scrollController = ScrollController();
 
+  void showSnackBar(String message,
+      {Duration duration = const Duration(milliseconds: 3000)}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: duration,
+      ),
+    );
+  }
+
   bool pushItem() {
     if (_textEditingState.currentState!.validate()) {
       if (stackItems.length >= int.parse(_maxStackController.text)) {
         // Show a message when the stack size exceeds the maximum limit
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Stack is full! ${_maxStackController.text}'),
-            showCloseIcon: true,
-          ),
-        );
+        showSnackBar('Stack is full! ${_maxStackController.text}');
         return false;
       } else {
         final randomColor = getRandomColor();
@@ -59,15 +64,8 @@ class _StackScreenState extends State<StackScreen> {
       if (count.isNegative) {
         await scrollTo(
             scrollController, scrollController.position.maxScrollExtent);
-
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text(
-              'The data stack has reached its limit, making reductions...',
-            ),
-            showCloseIcon: true,
-          ),
-        );
+        showSnackBar(
+            'The data stack has reached its limit, making reductions...');
 
         for (var i = 0; i < count.abs(); i++) {
           if (!mounted) break;
@@ -133,14 +131,9 @@ class _StackScreenState extends State<StackScreen> {
       });
 
       // Returns the topmost element from the stack without removing it.
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            'Topmost element from the stack: Stack data ${stackItems.length}',
-          ),
-          showCloseIcon: true,
-          duration: const Duration(milliseconds: 1500),
-        ),
+      showSnackBar(
+        'Topmost element from the stack: Stack data ${stackItems.length}',
+        duration: const Duration(milliseconds: 1500),
       );
     }
   }
@@ -149,22 +142,12 @@ class _StackScreenState extends State<StackScreen> {
     // Checks if the stack is empty.
     String message =
         stackItems.isEmpty ? 'Stack is empty.' : 'Stack is not empty.';
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        showCloseIcon: true,
-      ),
-    );
+    showSnackBar(message);
   }
 
   void checkStackSize() {
     // Returns the number of elements in the stack.
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Number of elements in the stack ${stackItems.length}.'),
-        showCloseIcon: true,
-      ),
-    );
+    showSnackBar('Number of elements in the stack ${stackItems.length}.');
   }
 
   void clearStack() async {
