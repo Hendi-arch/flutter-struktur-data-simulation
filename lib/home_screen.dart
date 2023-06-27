@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:struktur_data_demo/queue_screen.dart';
 import 'package:struktur_data_demo/source_code_widget.dart';
 import 'package:struktur_data_demo/stack_screen.dart';
@@ -75,7 +76,7 @@ class HomeScreen extends StatelessWidget {
                     onPressed: () => Navigator.of(context).push(
                         CupertinoPageRoute(
                             builder: (context) => const StackScreen())),
-                    icon: const Icon(Icons.arrow_circle_right),
+                    icon: const FaIcon(FontAwesomeIcons.arrowRightLong),
                     label: const Text("Demo"),
                   )
                 ],
@@ -103,7 +104,7 @@ class HomeScreen extends StatelessWidget {
                     onPressed: () => Navigator.of(context).push(
                         CupertinoPageRoute(
                             builder: (context) => const QueueScreen())),
-                    icon: const Icon(Icons.arrow_circle_right),
+                    icon: const FaIcon(FontAwesomeIcons.arrowRightLong),
                     label: const Text("Demo"),
                   )
                 ],

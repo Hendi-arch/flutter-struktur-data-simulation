@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:struktur_data_demo/colored_item.dart';
 import 'package:struktur_data_demo/helpers.dart';
 import 'package:struktur_data_demo/source_code_widget.dart';
@@ -187,6 +188,10 @@ class _QueueScreenState extends State<QueueScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton.filledTonal(
+          onPressed: () => Navigator.of(context).pop(),
+          icon: const FaIcon(FontAwesomeIcons.arrowLeft),
+        ),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Array Queue Demo'),
         centerTitle: true,

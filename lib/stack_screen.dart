@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:struktur_data_demo/colored_item.dart';
 import 'package:struktur_data_demo/helpers.dart';
 import 'package:struktur_data_demo/source_code_widget.dart';
@@ -185,6 +186,10 @@ class _StackScreenState extends State<StackScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        leading: IconButton.filledTonal(
+          onPressed: () => Navigator.of(context).pop(),
+          icon: const FaIcon(FontAwesomeIcons.arrowLeft),
+        ),
         title: const Text('Array Stack Demo'),
         centerTitle: true,
         actions: const [SourceCodeWidget()],
