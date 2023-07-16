@@ -14,22 +14,6 @@ class HomeScreen extends StatelessWidget {
       'name': 'Hendi Noviansyah',
       'photoUrl': 'assets/hendi.jpeg',
     },
-    {
-      'name': 'Cornelius',
-      'photoUrl': 'assets/placeholder.png',
-    },
-    {
-      'name': 'Faqih',
-      'photoUrl': 'assets/placeholder.png',
-    },
-    {
-      'name': 'Taufik',
-      'photoUrl': 'assets/placeholder.png',
-    },
-    {
-      'name': 'Fattah',
-      'photoUrl': 'assets/placeholder.png',
-    },
   ];
 
   @override
